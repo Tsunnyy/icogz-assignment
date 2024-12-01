@@ -299,6 +299,8 @@ form button {
 .table th {
   background-color: #664de5;
   color: #fff;
+  position: sticky;
+  left: 0;
 }
 
 .table th,

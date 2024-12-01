@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import img from "../src/assets/thank.gif"
 
 function App() {
   const [activeTab, setActiveTab] = useState("1");
@@ -111,7 +112,7 @@ function App() {
             title={<span className={completedSteps[2] ? 'completed-tab' : ''}>2</span>}
           >
             <h2>Lets set up a home for all your work</h2>
-            <p>You can always change theme later</p>
+            <p>You can always create another workspace later</p>
             <Formik
               initialValues={{
                 workSpaceName: formData.workSpaceName,
@@ -139,7 +140,7 @@ function App() {
                     )}
                   </div>
                   <div className="position-relative">
-                    <label>WorkSpace Url (Optional)</label>
+                    <label>WorkSpace URL (Optional)</label>
                     <Field name="workSpaceUrl" />
                   </div>
                   <button type="submit">Submit</button>
@@ -153,7 +154,7 @@ function App() {
             title={<span className={completedSteps[3] ? 'completed-tab' : ''}>3</span>}
           >
             <h2>How are you planning to use Eden?</h2>
-            <p>You can always change theme later</p>
+            <p>We'll streamline your setup experience accordingly</p>
             <Formik
               initialValues={{
                 forMyself: formData.forMyself,
@@ -188,7 +189,7 @@ function App() {
                         }}
                       />
                       <h5>For myself</h5>
-                      <p className='text-start mb-0'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda</p>
+                      <p className='text-start mb-0'>Write better, Think more clearly, Stay organized. </p>
                     </div>
                     <div
                       className={`box position-relative ${values.forTeam ? "selected" : ""}`}
@@ -205,7 +206,7 @@ function App() {
                         }}
                       />
                       <h5>With my team</h5>
-                      <p className='text-start mb-0'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda</p>
+                      <p className='text-start mb-0'>Wikis, docs, tasks & projects, all in one place</p>
                     </div>
                   </div>
                   <button type="submit">Submit</button>
@@ -215,6 +216,9 @@ function App() {
           </Tab>
 
           <Tab eventKey="4" title="4">
+            {/* <div className="text-center">
+              <img src={img} alt="Thank You" className='img-fluid' />
+            </div> */}
             <h2>Congratulations, {formData.FullName.split(" ")[0]}! </h2>
             <p>You have completed onboarding, you can start using the Eden!</p>
             <div className="table-responsive">
@@ -238,7 +242,7 @@ function App() {
                   </tr>
                   <tr>
                     <th>Purpose</th>
-                    <td>{formData.forMyself ? 'Personal Use' : 'Team Collaboration'}</td>
+                    <td>{formData.forMyself ? 'Personal Use' : formData.forTeam ? 'Team Collaboration' : "Not specified"}</td>
                   </tr>
                 </tbody>
               </table>
